@@ -1,0 +1,12 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+driver=webdriver.Chrome(executable_path="C:\chromedriver_win32\chromedriver.exe")
+
+driver.get("https://smartours.com/new-tours/")
+
+print(driver.title) #Title of the page
+
+print(driver.current_url) #return the URL of page
+print(driver.page_source) #HTML code for the page ( this will download huge HTML code so you can ignor this as well ) 
+driver.close() # close the brower
