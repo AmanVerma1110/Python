@@ -1,0 +1,27 @@
+import time
+
+
+from appium import webdriver
+
+desired_caps = {}
+desired_caps['deviceName'] = '138269607700036'
+desired_caps['platformName'] = 'Android'
+desired_caps['platformVersion'] = '12.0'
+desired_caps['automationName'] = 'UiAutomator2'
+desired_caps['appPackage'] = 'com.vivo.calculator'
+desired_caps['appActivity'] = '.Calculator'
+
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.implicitly_wait(5)
+
+driver.find_element_by_accessibility_id('2').click()
+driver.find_element_by_id('com.vivo.calculator:id/plus').click()
+driver.find_element_by_accessibility_id('6').click()
+driver.find_element_by_id('com.vivo.calculator:id/equal').click()
+
+result = driver.find_element_by_id('com.vivo.calculator:id/result_text').click()
+print(result)
+
+time.sleep(2)
+driver.quit()
+
