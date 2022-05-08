@@ -1,0 +1,32 @@
+import time
+
+
+from appium import webdriver
+
+desired_caps = dict(
+
+    deviceName='vivo V23e 5G',
+    platformName='Android',
+    platformVersion='12.0',
+    appPackage='com.google.android.dialer',
+    appActivity='com.android.dialer.main.impl.MainActivity',
+    automationName='UIAutomator2'
+
+)
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.find_element_by_id('com.google.android.dialer:id/dialpad_fab').click()
+driver.find_element_by_id('com.google.android.dialer:id/eight').click()
+driver.find_element_by_id('com.google.android.dialer:id/zero').click()
+driver.find_element_by_id('com.google.android.dialer:id/zero').click()
+driver.find_element_by_id('com.google.android.dialer:id/four').click()
+driver.find_element_by_id('com.google.android.dialer:id/six').click()
+driver.find_element_by_id('com.google.android.dialer:id/six').click()
+driver.find_element_by_id('com.google.android.dialer:id/eight').click()
+driver.find_element_by_id('com.google.android.dialer:id/five').click()
+driver.find_element_by_id('com.google.android.dialer:id/four').click()
+driver.find_element_by_id('com.google.android.dialer:id/four').click()
+driver.find_element_by_id('com.google.android.dialer:id/dialpad_voice_call_button').click()
+time.sleep(10)
+driver.find_element_by_id('com.google.android.dialer:id/incall_end_call').click()
+
+driver.quit()
