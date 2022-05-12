@@ -1,0 +1,26 @@
+import time
+
+
+from appium import webdriver
+
+desired_caps = dict(
+
+    deviceName='vivo V23e 5G',
+    platformName='Android',
+    platformVersion='12.0',
+    appPackage='com.google.android.contacts',
+    appActivity='com.google.android.apps.contacts.activities.PeopleActivity',
+    automationName='UIAutomator2'
+
+)
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.find_element_by_id('com.google.android.contacts:id/floating_action_button').click()
+driver.find_element_by_xpath("//android.widget.EditText[@text='First name']").send_keys("Aman")
+driver.find_element_by_xpath("//android.widget.EditText[@text='Last name']").send_keys("Verma")
+driver.find_element_by_xpath("//android.widget.EditText[@text='Phone']").send_keys("8004668544")
+driver.find_element_by_id("com.google.android.contacts:id/toolbar_button").click()
+
+
+time.sleep(4)
+
+driver.quit()
