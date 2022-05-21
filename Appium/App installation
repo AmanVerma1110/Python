@@ -1,0 +1,19 @@
+import time
+
+
+from appium import webdriver
+
+desired_caps = {}
+desired_caps['deviceName'] = '138269607700036'
+desired_caps['platformName'] = 'Android'
+desired_caps['platformVersion'] = '12.0'
+desired_caps['app'] = 'C:\\Users\\95002526\\PycharmProjects\\Appiumtesting\\testcase\\app\\Amazon.apk'
+
+
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.find_element_by_id()
+driver.implicitly_wait(5)
+
+time.sleep(4)
+
+driver.quit()
