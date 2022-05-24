@@ -1,0 +1,7 @@
+n = int(input("Enter the number for table ::"))
+
+for a in range(10):
+
+    b = n*(a+1)
+
+    print(n,"*",(a+1),"=",b)
