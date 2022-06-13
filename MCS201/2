@@ -1,0 +1,8 @@
+#Write a program in python, that print a warning message if the weight of a customer's luggage exceeds the allowed limit of 25Kg
+
+W = int(input("inter the weight :: \t"))
+
+if W<25:
+    print("Weight limit is okay")
+else:
+    print("Warning..... !! Weight limit exceeds over 25")
