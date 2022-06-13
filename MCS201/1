@@ -1,0 +1,10 @@
+#Write a program in python, that calculate the volume of sphere
+
+print("To calculate Volume of a sphere :: ")
+
+r = int(input("Enter the value of radius :: \t"))
+pi = 3.14
+r3 = r*r*r
+sphere = (4/3)*pi*r3
+
+print(sphere)
