@@ -1,0 +1,22 @@
+import time
+
+
+from appium import webdriver
+
+desired_caps = {}
+desired_caps['platformName'] = 'Android'
+desired_caps['deviceName'] = 'vivo V23e 5G'
+desired_caps['appPackage'] = 'com.google.android.contacts'
+desired_caps['appActivity'] = 'com.google.android.apps.contacts.activities.PeopleActivity'
+
+driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+driver.implicitly_wait(10)
+
+driver.find_element_by_android_uiautomator(
+    'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains("Deepu").instance(0))').click()
+
+driver.find_element_by_id("com.google.android.contacts:id/verb_call").click()
+driver.find_element_by_id("com.google.android.dialer:id/text").click()
+time.sleep(10)
+driver.find_element_by_id("com.google.android.dialer:id/incall_end_call").click()
+driver.quit()
