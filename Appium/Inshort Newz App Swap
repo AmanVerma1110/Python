@@ -1,0 +1,33 @@
+import time
+
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+
+from scroll_util import ScrollUtil
+
+desired_caps = dict(
+
+    deviceName='vivo V23e 5G',
+    platformName='Android',
+    platformVersion='12.0',
+    appPackage='com.nis.app',
+    appActivity='com.nis.app.ui.activities.HomeActivity',
+    automationName='UIAutomator2'
+
+)
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.implicitly_wait(5)
+
+driver.find_element(AppiumBy.ID,'com.nis.app:id/button_1').click()
+
+ScrollUtil.swipeUp(1,driver)
+time.sleep(5)
+ScrollUtil.swipeUp(5,driver)
+time.sleep(5)
+ScrollUtil.swipeRight(5,driver)
+time.sleep(5)
+ScrollUtil.swipeDown(5,driver)
+time.sleep(5)
+ScrollUtil.swipeLeft(5,driver)
+
+driver.quit()
