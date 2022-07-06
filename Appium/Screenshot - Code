@@ -1,0 +1,31 @@
+import time
+
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+
+from scroll_util import ScrollUtil
+
+desired_caps = dict(
+
+    deviceName='vivo V23e 5G',
+    platformName='Android',
+    platformVersion='12.0',
+    appPackage='com.nis.app',
+    appActivity='com.nis.app.ui.activities.HomeActivity',
+    automationName='UIAutomator2'
+
+)
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver.implicitly_wait(5)
+
+driver.find_element(AppiumBy.ID,'com.nis.app:id/button_1').click()
+
+ScrollUtil.swipeUp(1,driver)
+time.sleep(5)
+ts = time.strftime("%Y_%m_%d_%H%M%S")
+activityname = driver.current_activity
+filename = activityname+ts
+
+driver.save_screenshot("/Users/95002526/Desktop/New Folder"+filename+".png")
+
+driver.quit()
