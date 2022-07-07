@@ -1,0 +1,22 @@
+import pytest
+
+def setup_module(module):
+    print("Creating DB Connection")
+
+def teardown_module(module):
+    print("Closing DB Connection")
+
+def setup_function(function):
+    print("Launching Browser")
+
+
+def teardown_function(function):
+    print("Closing browser")
+
+
+def test_dologing():
+    print("Login Succesful")
+
+
+def test_dologout():
+    print("Logout Successful")
