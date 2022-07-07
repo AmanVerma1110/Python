@@ -1,0 +1,34 @@
+import pytest
+
+
+@pytest.fixture(scope='module')
+def setup():
+    print("Creating DB Connection")
+
+    yield
+    print("Closing DB connection")
+
+
+@pytest.fixture(scope='function')
+def before():
+    print("Opening Browser")
+
+    yield
+    print("closing Browser")
+
+
+# def test_dologing(setup,before):
+#     print("Login Successful")
+#
+#
+# def test_dologout(setup,before):
+#     print("Logout Successful")
+
+@pytest.mark.usefixtures("setup", "before")
+def test_dologing():
+    print("Login Successful")
+
+
+@pytest.mark.usefixtures("setup", "before")
+def test_dologout(setup, before):
+    print("Logout Successful")
