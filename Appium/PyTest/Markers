@@ -1,0 +1,21 @@
+import pytest
+
+
+@pytest.mark.functional
+def test_login():
+    print("User Login test")
+
+
+@pytest.mark.reggression
+def test_user_reg():
+    print("Executing User Reg Test")
+
+
+@pytest.mark.functional
+def test_compose_email():
+    print("Executing compose email Test")
+
+
+@pytest.mark.skip
+def test_skip():
+    print("This test skipped")
