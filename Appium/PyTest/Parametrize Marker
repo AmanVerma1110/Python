@@ -1,0 +1,14 @@
+import pytest
+
+def get_data():
+
+    return [
+
+        ("amanrow@gmail.com","aman001"),
+        ("aman.shakya786@gmail.com","aman002"),
+        ("aman107@amityonline.com","aman003")
+
+    ]
+@pytest.mark.parametrize("username,password",get_data())
+def test_login(username,password):
+    print(username, "___",password)
