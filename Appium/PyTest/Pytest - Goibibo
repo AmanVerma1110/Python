@@ -1,0 +1,35 @@
+import time
+
+import pytest
+from appium import webdriver
+
+
+def get_data():
+    return [
+
+        ["Delhi"],
+        ["Dubai"],
+
+    ]
+
+
+def setup_function():
+    desired_caps = {}
+    desired_caps['platformName'] = 'Android'
+    desired_caps['deviceName'] = '13696341770004B'
+    desired_caps['appPackage'] = 'com.goibibo'
+    desired_caps['appActivity'] = '.common.HomeActivity'
+    desired_caps['automationName'] = 'UiAutomator2'
+    desired_caps['noReset'] = True
+    global driver
+    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+
+
+def teardown_function():
+    time.sleep(2)
+    driver.quit()
+
+
+@pytest.mark.parametrize("city", get_data())
+def test_dologin(city):
+    print(city)
