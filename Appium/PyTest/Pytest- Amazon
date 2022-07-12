@@ -1,0 +1,42 @@
+import time
+
+import pytest
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+
+
+def get_data():
+    return [
+
+        ["Laptop"],
+        ["Book"],
+
+    ]
+
+
+def setup_function():
+    desired_caps = {}
+    desired_caps['platformName'] = 'Android'
+    desired_caps['deviceName'] = 'Android'
+    desired_caps['appPackage'] = 'in.amazon.mShop.android.shopping'
+    desired_caps['appActivity'] = 'com.amazon.mShop.home.HomeActivity'
+    desired_caps['noReset'] = True
+    global driver
+    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+
+
+def teardown_function():
+    time.sleep(2)
+    driver.quit()
+
+
+@pytest.mark.parametrize("Item", get_data())
+def test_dologin(Item):
+    driver.find_element(AppiumBy.ID, 'in.amazon.mShop.android.shopping:id/chrome_search_hint_view').click()
+    driver.find_element(AppiumBy.ID, 'in.amazon.mShop.android.shopping:id/rs_search_src_text').send_keys(Item)
+    driver.find_element(AppiumBy.ID, 'in.amazon.mShop.android.shopping:id/iss_search_dropdown_item_text_layout').click()
+    # ts = time.strftime("%Y_%m_%d_%H%M%S")
+    # activityname = driver.current_activity
+    # filename = activityname + ts
+    #
+    # driver.save_screenshot("/Users/95002526/Desktop/New Folder" + filename + ".png")
