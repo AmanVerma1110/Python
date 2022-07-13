@@ -1,0 +1,24 @@
+import logging
+
+#  1st Method
+# logging.basicConfig(filename="..\\logs\\logfile.log", format='%(asctime)s: %(levelname)s: %(message)s',
+#                     datefmt='%m/%d/%Y %I:%M:%S %p',level=logging.INFO)
+#
+# log = logging.getLogger()
+#
+# log.info("This is first Log")
+
+
+
+# 2nd Method
+def log():
+    logging.basicConfig(filename="..\\logs\\logfile.log", format='%(asctime)s: %(levelname)s: %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
+
+    logger = logging.getLogger()
+    return logger
+
+
+logger = log()
+logger.info("This is New Log")
+logger.error("This Is Error")
